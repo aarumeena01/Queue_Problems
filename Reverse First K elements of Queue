@@ -1,0 +1,22 @@
+queue<int> modifyQueue(queue<int> q, int k) {
+    stack<int>s;
+    for(int i=0;  i<k; i++){
+        int val = q.front();
+        q.pop();
+        s.push(val);
+    }
+    // step2 , fetch the data from stack
+    while(!s.empty()){
+        int val = s.top();
+        s.pop();
+        q.push(val);
+    }
+    // step3 , fetch n-k data from queue
+    int t = q.size()-k;
+    while(t--){
+        int val = q.front();
+        q.pop();
+        q.push(val);
+    }
+    return q;
+}
